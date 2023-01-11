@@ -1,0 +1,39 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;">My Tasks</h1>
+
+{% if tasks == [] %}
+   <p>There are no tasks in your collection!<br>
+   <b>Click Below To Add Your Tasks!</b></p>
+{% else %}
+    <div class="container" style="padding: 20px;">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Tasks</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks -%}
+                    <tr>
+                        <th scope="row">{{ task.id }}</th>
+                        <td>{{ task.task }}</td>
+                        <td><a class="btn btn-primary btn-sm" type="button" href="{{ url_for('edit_task', id=task.id) }}">Edit Task</a></td>
+                        <td><a type="button" class="btn btn-sm btn-danger" href="{{ url_for('delete_entry', id=task.id) }}">Delete</a></td>
+                    </tr>
+                {% endfor -%}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+
+<div class="container" style="text-align: center;">
+    <a type="button" class="btn btn-lg btn-primary" href="{{ url_for('add') }}">Add New Task</a>
+</div>
+{% endblock %}

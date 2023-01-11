@@ -1,0 +1,17 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block title %}Add Task{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <h1> Add A New Task: </h1>
+
+            {{ wtf.quick_form(form) }}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
